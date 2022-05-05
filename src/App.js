@@ -21,6 +21,7 @@ class App extends React.Component {
     .get("/api/users")
     .then(response =>{
       this.setState({test: response.data})
+      alert(response.data)
     })
     .catch(err => {
       console.log(err);
@@ -36,7 +37,6 @@ class App extends React.Component {
             Szare szczury razić prądem. ({this.state.test})
           </p>
           <button onClick={this.testAxios}>Test</button>
-          
           <a
             className="App-link"
             href="https://reactjs.org"
