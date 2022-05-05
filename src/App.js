@@ -10,6 +10,8 @@ class App extends React.Component {
     this.state = {
       test: 'Fail',
     }
+
+    this.testAxios.bind(this)
   }
 
   componentDidMount(){
