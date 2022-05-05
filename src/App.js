@@ -13,7 +13,6 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.testAxios()
   }
 
   testAxios() {
