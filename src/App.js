@@ -12,6 +12,10 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount(){
+    this.testAxios()
+  }
+
   testAxios() {
     return axios
     .get("/api/users")
