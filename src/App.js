@@ -29,7 +29,7 @@ class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Szare szczury razić prądem. ({this.test})
+            Szare szczury razić prądem. ({this.state.test})
           </p>
           <a
             className="App-link"
