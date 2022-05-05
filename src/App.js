@@ -6,13 +6,17 @@ import axios from 'axios';
 class App extends React.Component {
   constructor(props){
     super(props)
+
+    this.state = {
+      test: 'Fail',
+    }
   }
 
   testAxios() {
     return axios
     .get("/api/users")
     .then(response =>{
-      console.log(response.data)
+      this.setState({test: response.data})
     })
     .catch(err => {
       console.log(err);
@@ -25,7 +29,7 @@ class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Szare szczury razić prądem.
+            Szare szczury razić prądem. ({this.test})
           </p>
           <a
             className="App-link"
