@@ -3,6 +3,8 @@ const app = express()
 
 const path = require('path')
 
+const pool = require('./db');
+
 const port = process.env.PORT || 3000
 
 if (process.env.NODE_ENV === 'production') {
