@@ -11,7 +11,7 @@ class App extends React.Component {
       test: 'Fail',
     }
 
-    this.testAxios.bind(this)
+    this.testAxios = this.testAxios.bind(this)
   }
 
   componentDidMount(){
