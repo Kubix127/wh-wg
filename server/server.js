@@ -5,7 +5,23 @@ const path = require('path')
 
 const pool = require('./db');
 
+
+app.get('/api/users', (req, res) => {
+    // if(req.cookies["Gracz_Id"])
+     pool.query(`select Rola from gracz`, (err, rows) => {
+       if (err) {
+         res.send(err);
+       } else {
+         res.send('Success');
+       }
+     });
+//    else res.send(``);
+});
+
+
+
 const port = process.env.PORT || 3000
+
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('build'));
@@ -20,14 +36,3 @@ app.listen(port, (err) => {
 })
 
 
-app.get('/api/users', (req, res) => {
-    // if(req.cookies["Gracz_Id"])
-     pool.query(`select Rola from gracz`, (err, rows) => {
-       if (err) {
-         res.send(err);
-       } else {
-         res.send({data: 'Success'});
-       }
-     });
-//    else res.send(``);
-  });
