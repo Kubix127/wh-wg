@@ -20,8 +20,8 @@ class App extends React.Component {
     return axios
     .get("/api/users")
     .then(response =>{
-      this.setState({test: response})
-      alert(response)
+      this.setState({test: response.data})
+      alert(response.data)
     })
     .catch(err => {
       console.log(err);
