@@ -26,7 +26,7 @@ app.get('/api/users', (req, res) => {
        if (err) {
          res.send(err);
        } else {
-         res.send('Success');
+         res.send({data: 'Success'});
        }
      });
 //    else res.send(``);
