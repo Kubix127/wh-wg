@@ -35,6 +35,8 @@ class App extends React.Component {
           <p>
             Szare szczury razić prądem. ({this.state.test})
           </p>
+          <button onClick={this.testAxios}>Test</button>
+          
           <a
             className="App-link"
             href="https://reactjs.org"
