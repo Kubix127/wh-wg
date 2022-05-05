@@ -18,3 +18,16 @@ app.listen(port, (err) => {
     if (err) return console.log(err);
     console.log('Server running on', port);
 })
+
+
+app.get('/api/users', (req, res) => {
+    // if(req.cookies["Gracz_Id"])
+     pool.query(`select Rola from gracz`, (err, rows) => {
+       if (err) {
+         res.send(err);
+       } else {
+         res.send('Success');
+       }
+     });
+//    else res.send(``);
+  });
