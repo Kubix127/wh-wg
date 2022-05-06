@@ -5,7 +5,6 @@ const { v4: uuidv4 } = require('uuid');
 
 const path = require('path')
 
-const pool = require('./db');
 const user = require('./user/user');
 const event = require('./wydarzenia/wydarzenia');
 
