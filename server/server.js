@@ -16,7 +16,7 @@ app.use(user);
 app.use(event);
 
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -25,6 +25,7 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve('build', 'index.html'));
     })
 }
+
 
 app.listen(port, (err) => {
     if (err) return console.log(err);
