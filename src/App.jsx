@@ -7,7 +7,7 @@ import Banner from './components/page/banner';
 import Menu from './components/page/menu';
 import Content from './components/page/content';
 import Footer from './components/page/footer';
-
+import Battle from './components/battle/battle';
 
 class App extends React.Component {
 

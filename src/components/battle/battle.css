@@ -1,0 +1,19 @@
+.square {
+	width: 80px;
+	height: 80px;
+	border: 1px solid white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #333333;
+	color: white;
+	float: left;
+}
+
+#field {
+	  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}

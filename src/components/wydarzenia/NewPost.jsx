@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import CKEditor from '@ckeditor/ckeditor5-react';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
 
@@ -121,7 +121,7 @@ export default class NewPost extends React.Component {
 								/>
 							</div>}
 						<br/>
-						 <CKEditor
+						 {/* <CKEditor
               editor={ ClassicEditor }
               onInit={ editor => {
                 // You can store the "editor" and use when it is needed.
@@ -143,7 +143,7 @@ export default class NewPost extends React.Component {
               onFocus={ ( event, editor ) => {
                 console.log( 'Focus.', editor );
               } }
-            />
+            /> */}
 						<p><input type='submit' value='Utwórz' /></p>
 					</form>
 				</div>
