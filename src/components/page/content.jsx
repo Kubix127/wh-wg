@@ -2,17 +2,17 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Main from '../main/main';
-import Wydarzenia from './wydarzenia/wydarzenia';
-import Nowosci from './updateLog/updateLog';
-import Archiwa from './archiwa/archiwa';
-import Prowincje from './prowincje/prowincje';
-import Armie from './armie/armie';
-import ArmiaEdycja from './armie/armiaEdycja';
-import Agenci from './agenci/agenci';
-import Mapa from './mapa/mapa';
-import Technologia from './technologia/technologia';
-import Relacje from './relacje/relacje';
-import Profil from './profil/profil';
+import Wydarzenia from '../wydarzenia/wydarzenia';
+import Nowosci from '../updateLog/updateLog';
+import Archiwa from '../archiwa/archiwa';
+import Prowincje from '../prowincje/prowincje';
+import Armie from '../armie/armie';
+import ArmiaEdycja from '../armie/armiaEdycja';
+import Agenci from '../agenci/agenci';
+import Mapa from '../mapa/mapa';
+import Technologia from '../technologia/technologia';
+import Relacje from '../relacje/relacje';
+import Profil from '../profil/profil';
 
 
 
