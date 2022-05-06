@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Main from '../main/main';
-import Wydarzenia from './Wydarzenia/wydarzenia';
+import Wydarzenia from './wydarzenia/wydarzenia';
 import Nowosci from './updateLog/updateLog';
 import Archiwa from './archiwa/archiwa';
 import Prowincje from './prowincje/prowincje';
