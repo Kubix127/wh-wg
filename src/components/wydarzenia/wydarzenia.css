@@ -1,0 +1,43 @@
+#wydarzenia {
+	width: 100%;
+}
+
+.post {
+	width: 100%;
+	padding: 4px;
+}
+
+.post:hover{
+	background-color: rgb(200,200,200,0.2);
+}
+
+.post_link {
+	text-decoration: none;
+	color: white;
+}
+
+.post h2 {
+	margin: 10px;
+	overflow-wrap: anywhere;
+}
+
+.wydarzenia_autor {
+	float: right;
+}
+
+#new_post {
+  position: sticky;
+  top: 0;
+}
+
+.efektBox{
+	border: 1px solid white;
+	padding: 8px;
+	width: unset;
+	line-height: 24px;
+	margin-top: 4px;
+	align-items: flex-end;
+}
+.efektBox .flexBox{
+	flex-direction: column;
+}
