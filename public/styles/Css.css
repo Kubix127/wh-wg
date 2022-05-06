@@ -1,0 +1,592 @@
+@font-face {
+    font-family: 'gothenburg_frakturregular';
+    src: url('../fonts/gothenburgfraktur-webfont.woff2') format('woff2'),
+         url('../fonts/gothenburgfraktur-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'immortalregular';
+    src: url('../fonts/immortal-webfont.woff2') format('woff2'),
+         url('../fonts/immortal-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+*{
+	box-sizing: border-box;
+	
+    font-family: 'immortalregular';
+}
+
+body {
+	margin: 0px;
+	overflow-x: hidden;
+	height: 100%;
+}
+html {
+	height: 100%;
+}
+
+#root {
+	height: 100%;
+}
+
+.height {
+	height: 100%;
+}
+/*===============LOGIN=================*/
+
+.Login * {
+	overflow: visible;
+}
+
+.Login body{
+	background-color: #222222;
+}
+
+.Login #Circle {
+	background-image: url("../img/Login.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: local;
+	background-blend-mode: normal;
+	width: 100%;
+	border-radius: 20%;
+	filter: blur(8px);
+ 	-webkit-filter: blur(8px);
+ 	position: relative;
+ 	z-index: -1;
+}
+
+.Login #WH {
+	width: 100%;
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	margin: auto;
+	color: white;
+	font-weight: bold;
+	font-size: 64px;
+	text-align: center;
+	text-shadow: 3px 3px 8px black;
+	font-family: 'gothenburg_frakturregular';
+}
+
+.Login #Login {
+	position: absolute;
+	width: 400px;
+	height: 275px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	padding: 20px;
+	background-color: rgba(20,20,20,0.7);
+	box-shadow: 0 10px 10px rgba(0,0,0,0.5);
+	border-radius: 8px;
+	color: white;
+	text-align: center;
+	text-shadow: 2px 2px 3px black;
+	animation: up 1.5s;	
+}
+
+@keyframes up {
+	from{
+		top: 80%;
+		opacity: 0
+	}
+	to{
+		top: 50%;
+		opacity: 1;
+	}
+}
+.Login .input {
+	position: relative;
+}
+
+.Login .input input {
+	width: 100%;
+	margin-bottom: 30px;
+	background: transparent;
+	border: none;
+	outline: none;
+	border-bottom: 1px solid white;
+	color: white;
+	font-size: 16px;
+}
+
+.Login .input label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	color: white;
+	font-size: 16px;
+	transition: 0.5s;
+
+}
+
+.Login .input input:focus ~ label,
+.Login .input input:valid ~ label {
+	top:-18px;
+}
+
+.Login input[type="submit"]{
+	background-color: #F0DCBC;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	padding: 10px;
+	font-size: 16px;
+	float: left;
+	text-shadow: 1px 1px 2px white;
+}
+
+.Login input[value="Rejestracja"] {
+	float: right;
+}
+
+.Login footer {
+	position: relative;
+	margin-bottom: 0;
+}
+/*=============MOBILE==================*/
+
+@media only screen and (max-width: 600px){
+	.Login #Login {
+		width: 100%;
+	}
+
+	.Login #WH {
+		font-size: 48px;
+	}
+
+	main .content {
+		width: 95%;
+	}
+
+}
+
+@media only screen and (max-width: 930px){
+	header h1 {
+		font-size: 72px;
+	}
+
+	@media only screen and (max-width: 400px){
+		header h1 {
+			font-size: 48px;
+		}
+	}
+
+}
+
+@media only screen and (min-width: 930px){
+	header h1 {
+		font-size: 92px;
+	}
+}
+
+@media only screen and (min-width: 600px){
+	header.active {
+		margin: 0 200px;
+	}
+	header.active h1{
+		padding-right: 200px;
+	}
+	main.active {
+		margin: 0 200px;
+	}
+	main.active .content {
+		width: 100%;
+	}
+	footer.active {
+		margin: 0 200px;
+	}
+
+	main.active .moveContent {
+	padding-right: 200px;
+	}
+
+	main.active .background {
+	padding-right: 200px;
+	}
+	
+	
+	main.active .content {
+		width: 90%;
+	}
+
+	main .content {
+		width: 80%;
+	}
+}
+
+/*========================================*/
+
+header {
+	height: 19%;
+	position: relative;
+	background-color: #808080;
+	width: 100%;
+	background-image: url("../img/banner.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	transition: .5s;
+	z-index: 1;
+	border-bottom: 5px solid #BE9545;
+	overflow: hidden;
+}
+
+header h1 {
+	width: 100%;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+  transition: .5s;
+	padding: 10px;
+	text-align: center;
+}
+
+header h1 a {
+	font-weight: bold;
+	color: #BE9545;
+	text-shadow: 0 0 20px black;
+	text-align: center;
+	pointer-events: visible;
+	text-decoration: none;
+  font-family: 'gothenburg_frakturregular';
+}
+
+#menu {
+	position: fixed;
+	top: 0;
+	width: 50px;
+	height: 50px;
+	background-color: rgba(20,20,20,0.8);
+	color: white;
+	z-index: 10;
+	text-align: center;
+	margin:auto;
+	outline: 2px solid black;
+	cursor: pointer;
+	text-shadow: 2px 2px 3px black;
+
+}
+
+#menu:before {
+	content: '\f0c9';
+	font-family: fontAwesome;
+	position: absolute;
+	font-size: 40px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+#menu.active:before{
+	content: '\f00d';
+	font-family: fontAwesome;
+}
+
+
+nav {
+	position: fixed;
+	width: 200px;
+	top: 0;
+	left: -200px;
+	background-color: rgba(20,20,20,1);
+	background-image: url("../img/nav.jpg");
+	background-size: cover;
+	background-position: top;
+	background-repeat: no-repeat;
+	height: 1000px;
+	border-right: 5px solid #BE9545;
+	transition: 0.5s;
+	z-index: 1;
+	line-height: 1.5;
+}
+
+nav.active {
+	left: 0;
+}
+
+nav ul {
+	padding-top: 50px;
+	display: block;
+	padding-left: 15px;
+	list-style: none;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	text-shadow: 2px 2px 3px black;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+	color: #BE9545;
+}
+
+li.Player {
+	display: none;
+}
+
+nav .profile{
+	position: relative;
+	margin-bottom: 30px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	color: #ffffff;
+	text-shadow: 2px 2px 3px black;
+}
+
+nav .profile img{
+	width: 150px;
+}
+
+nav .profile a {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+main {
+	position: relative;
+	width: 100%;
+	min-height: 75%;
+	transition: .5s;
+	background-color: #272624;
+	overflow: hidden;
+	display: grid;
+}
+
+main .background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url("../img/back.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	transition: .5s;
+	opacity: 0.5;
+}
+
+main .background .shadow {
+	width: 80%;
+	height: 100%;
+	margin: auto;
+	background-color: black;
+	opacity: 1;
+	filter: blur(40px);
+ 	-webkit-filter: blur(40px);
+}
+
+main .moveContent {
+	width: 100%;
+	height: 100%;
+	transition: .5s;
+}
+
+main .content {
+	height: 100%;
+	margin: auto;
+	background-color: #424240;
+	box-shadow: 0px 0 10px #BE9545;
+	transition: .5s;
+	opacity: 0.9;
+	padding: 12px;
+	color: white;
+	text-shadow: 1px 1px 2px black;
+	display: flex;
+}
+
+
+footer {
+	position: relative;
+	height: 6%;
+	width: 100%;
+	padding: 3px 10px;
+	background-color: #272624;
+	transition: .5s;
+	z-index: 1;
+	color: white;
+	border-top: 5px solid #BE9545;
+	font-size: 14px;
+	text-shadow: 2px 2px 2px black;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+footer a {
+	text-decoration: none;
+	color: white;
+	text-shadow: 2px 2px 2px black;
+}
+
+
+.title {
+	text-align: center;
+	font-weight: bold;
+	margin: 6px 0;
+}
+
+.mtitle {
+	text-align: center;
+	font-weight: bold;
+	margin: 6px 0;
+	min-width: 250px;	
+}
+
+.tier {
+	position: absolute;
+	margin: 0 0 27px 225px;
+	font-size: 14px;
+	z-index: -1;
+}
+
+.czas {
+	position: absolute;
+	margin: 0 225px 27px 0;
+	font-size: 14px;
+}
+
+.flexBox {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: start;
+  align-items: start;
+  width: 100%;
+}
+
+.noWrap {
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.popUp {
+	position: relative;
+	width: 100%;
+	background-color: #3A3A3A;
+	box-shadow: 0px 0px 4px white;
+	padding: 6px;
+}
+
+.center {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.red {
+	color: rgb(255,50,50);
+}
+
+/*-----------Prowincja---------*/
+
+@media only screen and (max-width: 703px){
+		.prowincja .noWrap {
+			flex-wrap: wrap;
+		}
+		.prowincja .flexBox .flexBox{
+			justify-content: center;
+		}
+		.miasto {
+			width: 100%;
+		}
+	}
+
+.prowincja {
+	border: 1px solid #BE9545;
+	box-shadow: 1px 1px 4px black;
+	padding: 6px;
+}
+
+.prowincja ul {
+	list-style: none;
+	padding: 6px;
+	margin: 0;
+	flex-shrink: 0;
+}
+
+.miasto {
+	float: left;
+	min-width: 250px;
+	border: 1px solid;
+	margin: 6px;
+	display: inline;
+}
+
+.miasto hr {
+	margin: 0;
+}
+
+.budynek {
+	height: 50px;
+	width: 100%;
+	border: 1px solid;
+	overflow: hidden;
+	padding: 4px;
+	font-size: 16px;
+}
+
+.budowa {
+	font-size: 24px;
+}
+
+
+/*------Animacja Opisu------*/
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+/*=========Armia=========*/
+
+.whitebox {
+	border: 1px solid white;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.pad5 {
+	padding: 5px;
+}
+
+.pad20 {
+	padding: 20px;
+}
+
+
+.mapa {
+	max-width: 100%;
+  height: auto;
+}
+

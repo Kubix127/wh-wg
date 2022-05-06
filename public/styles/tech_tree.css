@@ -1,0 +1,91 @@
+#tech_container {
+	width: 100%;
+	overflow: hidden;
+}
+
+#tech_panzoom {
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.Node{
+	outline:solid;
+	outline-color: #ab1e0c;
+	outline-width:4px;
+	background-color:#fff;
+	z-index:1;
+	width: 150px;
+	min-height: 60px;
+	}
+.Node.empty {
+	outline: none;
+	background-color: initial;
+}
+
+.Node:hover{
+	cursor:pointer;
+}
+
+.Node.done {
+	outline-color: #ffd000;
+}
+.Node.pending {
+	outline-color: #54ffbe;
+}
+.Node.techActive {
+	outline-color: #24ad21;
+}
+/*.Node.locked {
+	outline-color: grey;
+}*/
+
+.TreeContainer {
+	height: 1000px;
+	width: 3000px;
+}
+.Tree{
+	background-color:transparent;
+	position: absolute;
+	display:flex;
+	justify-content:space-evenly;
+	flex-direction:column;
+	height: 1000px;
+	width: 3000px;
+	}
+@-webkit-keyframes activate{0%{
+	outline-color:grey;
+	stroke:grey
+	}to{
+		outline-color:gold;
+		stroke:gold
+	}}
+	@keyframes activate{0%{
+		outline-color:grey;
+		stroke:grey
+	}to{
+		outline-color:gold;
+		stroke:gold
+	}
+}
+.Tree .active{
+	-webkit-animation:activate 1.5s forwards;
+	animation:activate 1.5s forwards
+}
+.Tree-Row{
+	display:flex;
+	justify-content:space-evenly;
+
+}
+.Link-Container{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%
+}
+.Link{
+	fill:none;
+	stroke:grey;
+	stroke-width:6px
+}
