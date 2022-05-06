@@ -1,23 +1,19 @@
 const express = require('express')
-const app = express()
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const { v4: uuidv4 } = require('uuid');
 
 const path = require('path')
 
 const pool = require('./db');
+const user = require('./user/user');
+const event = require('./wydarzenia/wydarzenia');
 
-
-app.get('/api/users', (req, res) => {
-    // if(req.cookies["Gracz_Id"])
-     pool.query(`select Rola from gracz`, (err, rows) => {
-       if (err) {
-         res.send(err);
-       } else {
-         res.send('Success');
-       }
-     });
-//    else res.send(``);
-});
-
+const app = express();
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(user);
+app.use(event);
 
 
 const port = process.env.PORT || 3000
