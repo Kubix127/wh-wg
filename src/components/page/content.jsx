@@ -3,16 +3,16 @@ import { Route, Switch } from 'react-router-dom';
 
 import Main from '../main/main';
 import Wydarzenia from './Wydarzenia/wydarzenia';
-import Nowosci from './updateLog';
-import Archiwa from './archiwa';
-import Prowincje from './prowincje';
-import Armie from './armie';
-import ArmiaEdycja from './armiaEdycja';
-import Agenci from './agenci';
-import Mapa from './mapa';
-import Technologia from './technologia';
-import Relacje from './relacje';
-import Profil from './profil';
+import Nowosci from './updateLog/updateLog';
+import Archiwa from './archiwa/archiwa';
+import Prowincje from './prowincje/prowincje';
+import Armie from './armie/armie';
+import ArmiaEdycja from './armie/armiaEdycja';
+import Agenci from './agenci/agenci';
+import Mapa from './mapa/mapa';
+import Technologia from './technologia/technologia';
+import Relacje from './relacje/relacje';
+import Profil from './profil/profil';
 
 
 
