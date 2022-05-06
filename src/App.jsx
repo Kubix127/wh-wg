@@ -22,7 +22,6 @@ class App extends React.Component {
     .get("/api/users")
     .then(response =>{
       this.setState({test: response.data})
-      alert(response.data)
     })
     .catch(err => {
       console.log(err);
