@@ -121,7 +121,7 @@ export default class NewPost extends React.Component {
 								/>
 							</div>}
 						<br/>
-						 {/* <CKEditor
+						{/* <CKEditor
               editor={ ClassicEditor }
               onInit={ editor => {
                 // You can store the "editor" and use when it is needed.
@@ -144,7 +144,7 @@ export default class NewPost extends React.Component {
                 console.log( 'Focus.', editor );
               } }
             /> */}
-						<p><input type='submit' value='Utwórz' /></p>
+			 			<p><input type='submit' value='Utwórz' /></p>
 					</form>
 				</div>
 		)}

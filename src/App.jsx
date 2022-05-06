@@ -2,12 +2,14 @@ import React from 'react';
 import {Route, Redirect, BrowserRouter as Router, Switch} from 'react-router-dom';
 import axios from 'axios';
 
-import Login from './components/login/login';
 import Banner from './components/page/banner';
 import Menu from './components/page/menu';
 import Content from './components/page/content';
 import Footer from './components/page/footer';
+import Login from './components/login/login';
 import Battle from './components/battle/battle';
+
+
 
 class App extends React.Component {
 
@@ -150,7 +152,8 @@ class App extends React.Component {
 			})
 	}
 
-  render(){
+
+	render(){
 		if(this.state.Loaded) {
 			if(this.state.Rola){
 				return(
@@ -215,5 +218,6 @@ class App extends React.Component {
 		return(<div>Loading...</div>)
 	}
 }
+
 
 export default App;
