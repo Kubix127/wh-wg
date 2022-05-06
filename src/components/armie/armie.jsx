@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Armia from './armia';
-import FrakcjaSaldo from './frakcjaSaldo';
+import FrakcjaSaldo from '../general/frakcjaSaldo';
 
 
 export default class Armie extends React.Component {

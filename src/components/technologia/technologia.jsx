@@ -5,7 +5,7 @@ import { PanZoom } from 'react-easy-panzoom';
 import ReactTooltip from 'react-tooltip';
 import axios from 'axios';
 
-import DisplayEfekty from './Wydarzenia/DisplayEfekty'
+import DisplayEfekty from '../general/DisplayEfekty'
 
 
 

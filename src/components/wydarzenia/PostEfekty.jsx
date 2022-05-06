@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import DisplayEfekty from './DisplayEfekty'
+import DisplayEfekty from '../general/DisplayEfekty'
 
 export default class PostEfekty extends React.Component {
 	constructor(props){
