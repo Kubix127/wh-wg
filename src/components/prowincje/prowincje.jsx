@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Prowincja from './prowincja';
-import FrakcjaSaldo from './frakcjaSaldo';
+import FrakcjaSaldo from '../general/frakcjaSaldo';
 
 export default class Prowincje extends React.Component {
 	constructor(props){
