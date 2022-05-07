@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-// import CKEditor from '@ckeditor/ckeditor5-react';
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
 
 import 'react-calendar/dist/Calendar.css';
+
+import EdytorTekstu from './edytorTekstu';
+import Edytor from './edytorTekstu';
 
 export default class NewPost extends React.Component {
 	constructor(props){
@@ -121,29 +122,7 @@ export default class NewPost extends React.Component {
 								/>
 							</div>}
 						<br/>
-						{/* <CKEditor
-              editor={ ClassicEditor }
-              onInit={ editor => {
-                // You can store the "editor" and use when it is needed.
-                console.log( 'Editor is ready to use!', editor );
-              } }
-              onChange={ ( event, editor ) => {
-                const data = editor.getData();
-                this.setState({text: data})
-                console.log( { event, editor, data } );
-              } }
-              config={{
-              	ckfinder:{
-              		uploadUrl:'https://api.cloudinary.com/v1_1/whwg/image/upload',
-              	}
-              }}
-              onBlur={ ( event, editor ) => {
-                console.log( 'Blur.', editor );
-              } }
-              onFocus={ ( event, editor ) => {
-                console.log( 'Focus.', editor );
-              } }
-            /> */}
+						<EdytorTekstu />
 			 			<p><input type='submit' value='Utwórz' /></p>
 					</form>
 				</div>
