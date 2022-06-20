@@ -20,7 +20,6 @@ export default class NewPost extends React.Component {
 			rola: this.props.rola,
 			calendar: false,
 			date: new Date(),
-			editorState: null,
 		}
 		this.onChange = this.onChange.bind(this)
 		this.onSubmit = this.onSubmit.bind(this)
@@ -48,7 +47,7 @@ export default class NewPost extends React.Component {
 		var date = this.getDate();
 		const post = {
 			title: this.state.title,
-			text: this.state.editorState.getCurrentContent(),
+			text: this.state.text,
 			autor: this.state.rola,
 			date: date,
 		}
