@@ -5,8 +5,7 @@ import Calendar from 'react-calendar';
 
 import 'react-calendar/dist/Calendar.css';
 
-import EdytorTekstu from './edytorTekstu';
-import Edytor from './edytorTekstu';
+import EdytorTekstu from '../general/edytorTekstu';
 
 export default class NewPost extends React.Component {
 	constructor(props){
@@ -21,20 +20,26 @@ export default class NewPost extends React.Component {
 			rola: this.props.rola,
 			calendar: false,
 			date: new Date(),
+			editorState: null,
 		}
-		this.onChange = this.onChange.bind(this);
-		this.onSubmit = this.onSubmit.bind(this);
-		this.onCalendarChange=this.onCalendarChange.bind(this);
-		this.showCalendar=this.showCalendar.bind(this);
+		this.onChange = this.onChange.bind(this)
+		this.onSubmit = this.onSubmit.bind(this)
+		this.onCalendarChange = this.onCalendarChange.bind(this)
+		this.showCalendar = this.showCalendar.bind(this)
+		this.onEdytorChange = this.onEdytorChange.bind(this)
 	}
 	
 	componentDidMount() {
 		console.log(this.props);
 		console.log(this.state.date);
 	}
-	
+
 	onChange(e){
 		this.setState({ [e.target.name]: e.target.value});
+	}
+
+	onEdytorChange(editorState){
+		this.setState({text: editorState})
 	}
 
 	onSubmit(e){
@@ -43,7 +48,7 @@ export default class NewPost extends React.Component {
 		var date = this.getDate();
 		const post = {
 			title: this.state.title,
-			text: this.state.text,
+			text: this.state.editorState.getCurrentContent(),
 			autor: this.state.rola,
 			date: date,
 		}
@@ -122,7 +127,34 @@ export default class NewPost extends React.Component {
 								/>
 							</div>}
 						<br/>
-						<EdytorTekstu />
+						{/* <CKEditor
+              editor={ ClassicEditor }
+              onInit={ editor => {
+                // You can store the "editor" and use when it is needed.
+                console.log( 'Editor is ready to use!', editor );
+              } }
+              onChange={ ( event, editor ) => {
+                const data = editor.getData();
+                this.setState({text: data})
+                console.log( { event, editor, data } );
+              } }
+              config={{
+              	ckfinder:{
+              		uploadUrl:'https://api.cloudinary.com/v1_1/whwg/image/upload',
+              	}
+              }}
+              onBlur={ ( event, editor ) => {
+                console.log( 'Blur.', editor );
+              } }
+              onFocus={ ( event, editor ) => {
+                console.log( 'Focus.', editor );
+              } }
+            /> */}
+			<EdytorTekstu
+				text={this.state.text}
+				onEdytorChange={this.onEdytorChange}
+				editorState={this.state.editorState}
+			/>
 			 			<p><input type='submit' value='Utwórz' /></p>
 					</form>
 				</div>
