@@ -152,7 +152,6 @@ export default class NewPost extends React.Component {
 			<EdytorTekstu
 				text={this.state.text}
 				onEdytorChange={this.onEdytorChange}
-				editorState={this.state.editorState}
 			/>
 			 			<p><input type='submit' value='Utwórz' /></p>
 					</form>
