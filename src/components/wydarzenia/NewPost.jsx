@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-// import CKEditor from '@ckeditor/ckeditor5-react';
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
 
 import 'react-calendar/dist/Calendar.css';
+
+import EdytorTekstu from '../general/edytorTekstu';
 
 export default class NewPost extends React.Component {
 	constructor(props){
@@ -21,19 +21,24 @@ export default class NewPost extends React.Component {
 			calendar: false,
 			date: new Date(),
 		}
-		this.onChange = this.onChange.bind(this);
-		this.onSubmit = this.onSubmit.bind(this);
-		this.onCalendarChange=this.onCalendarChange.bind(this);
-		this.showCalendar=this.showCalendar.bind(this);
+		this.onChange = this.onChange.bind(this)
+		this.onSubmit = this.onSubmit.bind(this)
+		this.onCalendarChange = this.onCalendarChange.bind(this)
+		this.showCalendar = this.showCalendar.bind(this)
+		this.onEdytorChange = this.onEdytorChange.bind(this)
 	}
 	
 	componentDidMount() {
 		console.log(this.props);
 		console.log(this.state.date);
 	}
-	
+
 	onChange(e){
 		this.setState({ [e.target.name]: e.target.value});
+	}
+
+	onEdytorChange(editorState){
+		this.setState({text: editorState})
 	}
 
 	onSubmit(e){
@@ -144,6 +149,10 @@ export default class NewPost extends React.Component {
                 console.log( 'Focus.', editor );
               } }
             /> */}
+			<EdytorTekstu
+				text={this.state.text}
+				onEdytorChange={this.onEdytorChange}
+			/>
 			 			<p><input type='submit' value='Utwórz' /></p>
 					</form>
 				</div>
