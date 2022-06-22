@@ -114,7 +114,7 @@ export default class NewPost extends React.Component {
 						{this.state.rola==='GM' && 
 						<div>
 							<label>Podpis: </label>
-							<input type='text' minLength='1' maxLength='60' onChange={this.onChange} name='title' value={this.state.podpis} />
+							<input type='text' minLength='1' maxLength='60' onChange={this.onChange} name='podpis' value={this.state.podpis} />
 						</div>}
 
 						{this.state.calendar &&
