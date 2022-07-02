@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class Main extends React.Component {
 
-
+// Kiedyś będzie działać
 render(){
 	return (
 	<div>
