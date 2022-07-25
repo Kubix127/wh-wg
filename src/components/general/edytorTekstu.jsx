@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw, convertFromHTML, ContentState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 
 
@@ -11,9 +11,13 @@ export default class Edytor extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      editorState: EditorState.createEmpty(),
+      editorState: EditorState.createWithContent(ContentState.createFromBlockArray(convertFromHTML(this.props.text))) || EditorState.createEmpty(),
     }
     this.onEditorStateChange = this.onEditorStateChange.bind(this)
+  }
+
+  componentDidMount() {
+    console.log(this.state)
   }
 
 
@@ -31,6 +35,7 @@ export default class Edytor extends React.Component {
     return (
       <div className={styles.edytorTekstu}>
         <Editor
+          defaultEditorState={editorState}
           editorState={editorState}
           wrapperClassName="demo-wrapper"
           editorClassName="demo-editor"
