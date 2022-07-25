@@ -32,10 +32,16 @@ class App extends React.Component {
 			Rola: '',
 
 			wydarzenia_efekty: '',
+			page: {
+				main: [],
+				news: [],
+				archive: [],
+			},
 		};
 	
 		this.logIn = this.logIn.bind(this);
 		this.updateSkarbiec = this.updateSkarbiec.bind(this);
+		this.getPages = this.getPages.bind(this);
 	}
 
 	componentDidMount() {
@@ -45,9 +51,6 @@ class App extends React.Component {
 				// Resize();
 			});
 		}
-	
-
-	
 	}
 
 	componentDidUpdate() {
@@ -68,6 +71,7 @@ class App extends React.Component {
 				if (response.data==='GM') {
 					this.getEfekty();
 				}
+				this.getPages();
 				this.setState({Loaded: this.state.Loaded+1});
 			})
 			.catch(err => {
@@ -152,6 +156,23 @@ class App extends React.Component {
 			})
 	}
 
+	getPages() {
+		return axios
+			.get('/api/general/page')
+			.then(response =>{
+				console.log(response.data)
+				const page = {
+					main: response.data['main'] || [],
+					news: response.data['news'] || [],
+					archive: response.data['archive'] || [],
+				}
+				this.setState({page: page})
+			})
+			.catch(err => {
+				console.log(err);
+			})
+	}
+
 
 	render(){
 		if(this.state.Loaded) {
@@ -179,7 +200,7 @@ class App extends React.Component {
 										/>
 										<main id='main'>
 										<Content
-											page = {this.props.Page}
+											page = {this.state.page}
 											rekrutacja = {this.state.rekrutacja}
 											prowincje = {this.state.prowincje}
 											armie = {this.state.armie}
