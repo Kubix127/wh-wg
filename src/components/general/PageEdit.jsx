@@ -2,7 +2,8 @@ import React from "react";
 import axios from 'axios'
 import ReactHtmlParser from 'react-html-parser'; 
 
-import EdytorTekstu from './edytorTekstu'
+import EdytorTekstu from './edytorTekstu';
+import ConfirmButton from "./confirmButton";
 
 export default class PageEdit extends React.Component {
     constructor(props) {
@@ -84,7 +85,9 @@ export default class PageEdit extends React.Component {
                   text={paragraph.content}
                   onEdytorChange={this.onEdytorChange}
                 />
-                <button onClick={this.saveParagraph}>Zapisz</button>
+                <ConfirmButton onClickFunction={this.saveParagraph}>
+                  <button>Zapisz</button>
+                </ConfirmButton>
               </div>
             
             )}
