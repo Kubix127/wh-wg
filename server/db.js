@@ -6,6 +6,7 @@ const pool = mysql.createPool({
     password: process.env.MYSQL_PWD || '94ffc5a4',
     database: process.env.MYSQL_DB || 'heroku_5776882340ec5aa',
     multipleStatements: true,
+    connectionLimit: 9,
   });
   
   module.exports = pool;
