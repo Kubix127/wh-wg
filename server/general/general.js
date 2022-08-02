@@ -26,20 +26,16 @@ general.post('/api/general/editPage', async (req, res) => {
     pool.query(`INSERT INTO pages (page,content,IdPage) VALUES ('${paragraph.page}','${paragraph.content}','${paragraph.IdPage}')`, (err, rows) => {
       if (err) {
         res.send(err);
-      } else {
-        res.send('Success!')
       }
     }); 
 
     pool.query(`UPDATE pages SET content='${paragraph.content}', IdPage='${paragraph.IdPage}' WHERE IdPage='${paragraph.IdPage}' AND page='${paragraph.page}'`, (err, rows) => {
       if (err) {
         res.send(err);
-      } else {
-        res.send('Success!')
       }
     });
-  
   } 
+  res.send('Success!')
 });
 
 general.post('/api/general/deleteParagraph', (req, res) => {
