@@ -100,62 +100,40 @@ export default class NewPost extends React.Component {
 	render() {
 		return (
 			<div>
-					<Link to='/Wydarzenia'>
-						<button>{"<<< Powrót"}</button>
-					</Link>
-					<hr/>
+				<Link to='/Wydarzenia'>
+					<button>{"<<< Powrót"}</button>
+				</Link>
+				<hr/>
 
-					<form onSubmit={this.onSubmit}>
-						<label>Tytuł: </label>
-						<input type='text' minLength='1' maxLength='60' onChange={this.onChange} name='title' value={this.state.title} />
+				<form onSubmit={this.onSubmit}>
+					<label>Tytuł: </label>
+					<input type='text' minLength='1' maxLength='60' onChange={this.onChange} name='title' value={this.state.title} />
 
-						<div onClick={this.showCalendar}>Data: {this.getDate()}, Kwartał: {this.getKwartal()}</div>
+					<div onClick={this.showCalendar}>Data: {this.getDate()}, Kwartał: {this.getKwartal()}</div>
 
-						{this.state.rola==='GM' && 
+					{this.state.rola==='GM' && 
+					<div>
+						<label>Podpis: </label>
+						<input type='text' minLength='1' maxLength='60' onChange={this.onChange} name='podpis' value={this.state.podpis} />
+					</div>}
+
+					{this.state.calendar &&
 						<div>
-							<label>Podpis: </label>
-							<input type='text' minLength='1' maxLength='60' onChange={this.onChange} name='podpis' value={this.state.podpis} />
+							<Calendar 
+								minDate = {new Date()}
+								onChange = {this.onCalendarChange}
+								value = {this.state.date}
+							/>
 						</div>}
-
-						{this.state.calendar &&
-							<div>
-								<Calendar 
-									minDate = {new Date()}
-									onChange = {this.onCalendarChange}
-									value = {this.state.date}
-								/>
-							</div>}
-						<br/>
-						{/* <CKEditor
-              editor={ ClassicEditor }
-              onInit={ editor => {
-                // You can store the "editor" and use when it is needed.
-                console.log( 'Editor is ready to use!', editor );
-              } }
-              onChange={ ( event, editor ) => {
-                const data = editor.getData();
-                this.setState({text: data})
-                console.log( { event, editor, data } );
-              } }
-              config={{
-              	ckfinder:{
-              		uploadUrl:'https://api.cloudinary.com/v1_1/whwg/image/upload',
-              	}
-              }}
-              onBlur={ ( event, editor ) => {
-                console.log( 'Blur.', editor );
-              } }
-              onFocus={ ( event, editor ) => {
-                console.log( 'Focus.', editor );
-              } }
-            /> */}
-			<EdytorTekstu
-				text={this.state.text}
-				onEdytorChange={this.onEdytorChange}
-			/>
-			 			<p><input type='submit' value='Utwórz' /></p>
-					</form>
-				</div>
+					<br/>
+					
+					<EdytorTekstu
+						text={this.state.text}
+						onEdytorChange={this.onEdytorChange}
+					/>
+					<p><input type='submit' value='Utwórz' /></p>
+				</form>
+			</div>
 		)}
 }
 

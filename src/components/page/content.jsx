@@ -43,7 +43,16 @@ export default class content extends React.Component {
 				<div className="moveContent">
 					<div id="content" className="content">
 						<Switch>
-								<Route path="/" exact component={Main} />
+								<Route 
+									path="/main" 
+									render={(props)=>
+										<Main 
+											rola = {this.props.rola}
+											paragraphs = {this.props.page['main']}
+											{...props}
+										/>
+									}
+								/>
 								<Route 
 									path="/Wydarzenia" 
 									render={(props)=>

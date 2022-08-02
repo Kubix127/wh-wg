@@ -9,7 +9,7 @@ function RenderNav(refresh, role) {
 	if (role==="Obserwator") {
 		return(
 			<ul>
-				<li><NavLink exact to="/">Strona Główna</NavLink></li>
+				<li><NavLink exact to="/main">Strona Główna</NavLink></li>
 				<li><NavLink to="/Wydarzenia">Wydarzenia</NavLink></li>
 				<li><NavLink to="/Nowosci">Nowości</NavLink></li>
 				<li><NavLink to="/Archiwa">Archiwa</NavLink></li>
@@ -18,7 +18,7 @@ function RenderNav(refresh, role) {
 	} else if (role==="GM") {
 		return(
 			<ul>
-				<li><NavLink exact to="/">Strona Główna</NavLink></li>
+				<li><NavLink exact to="/main">Strona Główna</NavLink></li>
 				<li><NavLink to="/Wydarzenia">Wydarzenia</NavLink></li>
 				<li><NavLink to="/Nowosci">Nowości</NavLink></li>
 				<li><NavLink to="/Archiwa">Archiwa</NavLink></li>
@@ -27,7 +27,7 @@ function RenderNav(refresh, role) {
 	} else {
 		return (
 			<ul>
-				<li><NavLink exact to="/">Strona Główna</NavLink></li>
+				<li><NavLink exact to="/main">Strona Główna</NavLink></li>
 				<li><NavLink to="/Wydarzenia">Wydarzenia</NavLink></li>
 				<li><NavLink to="/Nowosci">Nowości</NavLink></li>
 				<li><NavLink to="/Archiwa/">Archiwa</NavLink></li>

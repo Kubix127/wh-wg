@@ -1,11 +1,12 @@
 const mysql = require('mysql');
-
+ 
 const pool = mysql.createPool({
-    host: process.env.MYSQL_HOST || 'eu-cdbr-west-02.cleardb.net',
-    user: process.env.MYSQL_USER || 'be272d29b3dde1',
-    password: process.env.MYSQL_PWD || '94ffc5a4',
-    database: process.env.MYSQL_DB || 'heroku_5776882340ec5aa',
+    host: process.env.MYSQL_HOST || process.env.REACT_APP_MYSQL_HOST,
+    user: process.env.MYSQL_USER || process.env.REACT_APP_MYSQL_USER,
+    password: process.env.MYSQL_PWD || process.env.REACT_APP_MYSQL_PWD,
+    database: process.env.MYSQL_DB || process.env.REACT_APP_MYSQL_DB,
     multipleStatements: true,
+    connectionLimit: 8,
   });
-  
+
   module.exports = pool;

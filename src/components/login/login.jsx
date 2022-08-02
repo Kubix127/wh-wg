@@ -38,7 +38,7 @@ export default class Login extends React.Component {
 					if(response.data){
 						const cookies = new Cookies();
 						cookies.set('Gracz_Id', response.data.Id, { path: '/' });
-						this.props.history.replace('/');
+						this.props.history.replace('/main');
 						this.props.logIn();
 					}
 				})
@@ -56,7 +56,7 @@ export default class Login extends React.Component {
 					if(response.data.state==='Success'){
 						const cookies = new Cookies();
 						cookies.set('Gracz_Id', response.data.Id, { path: '/' });
-						this.props.history.replace('/');
+						this.props.history.replace('/main');
 						this.props.logIn();	
 					}
 					if (response.data.state==='Już istnieje') {

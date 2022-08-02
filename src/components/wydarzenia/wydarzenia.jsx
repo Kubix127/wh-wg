@@ -69,7 +69,7 @@ export default class wydarzenia extends React.Component {
 							wydarzenia_efekty = {this.props.wydarzenia_efekty}
 							history={this.props.history}
 						/>
-					: <div>Jeżeli post się nie ładuje, to najprawdopodobniej nie istnieje.</div>}
+					: <div>Jeżeli post się nie ładuje, to najprawdopodobniej nie istnieje, albo coś się zepsuło. :/</div>}
 				</Route>
 			</Switch>
 			</div>
