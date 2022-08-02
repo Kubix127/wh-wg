@@ -47,7 +47,7 @@ general.post('/api/general/deleteParagraph', (req, res) => {
     name: req.body.name,
     Id: req.body.Id
   };
-  pool.query(`DELETE FROM pages WHERE name='${paragraph.name}' AND Id='${paragraph.Id}'`, (err, rows) => {
+  pool.query(`DELETE FROM pages WHERE page='${paragraph.name}' AND Id='${paragraph.Id}'`, (err, rows) => {
     if (err) {
       res.send(err);
     } else {

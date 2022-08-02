@@ -18,7 +18,10 @@ export default class PageEdit extends React.Component {
       this.saveParagraph = this.saveParagraph.bind(this)
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
+      if (prevProps.paragraphs !== this.props.paragraphs) { 
+        this.setState({paragraphs: this.props.paragraphs});
+      }
       console.log(this.state)
       console.log(this.props)
     }
@@ -36,6 +39,25 @@ export default class PageEdit extends React.Component {
         paragraphs: [...prevState.paragraphs, newparagraph]
       }))
     }
+
+    deleteParagraph(Id) {
+      this.setState({paragraphs: this.state.paragraphs.filter((paragraph) => { 
+        return paragraph.Id !== Id
+      })});
+
+
+      const page = {
+        name: this.props.name,
+        Id: Id
+      }
+
+      return axios
+      .post('../api/general/deleteParagraph', page)
+        .catch(err => {
+          console.log(err);
+        })
+
+      }
 
     editParagraph(IdPage) {
       this.setState({edit: IdPage})
@@ -77,7 +99,14 @@ export default class PageEdit extends React.Component {
             this.state.edit !== paragraph.IdPage ?
               <div key={paragraph.page+'_'+paragraph.IdPage}>
                 {ReactHtmlParser(paragraph.content)}
-                {this.state.edit === null && <button onClick={()=>this.editParagraph(paragraph.IdPage)}>Edycja</button>}
+                {this.state.edit === null && 
+                <>
+                  <button onClick={()=>this.editParagraph(paragraph.IdPage)}>Edycja</button>
+                  <ConfirmButton onClickFunction={()=>this.deleteParagraph(paragraph.Id)}>
+                    <button>Usuń</button>
+                  </ConfirmButton>
+                </>
+                }
               </div>
               :
               <div key={paragraph.page+'_'+paragraph.IdPage}>

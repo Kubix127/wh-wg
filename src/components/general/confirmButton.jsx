@@ -26,7 +26,7 @@ export default class ConfirmButton extends React.Component {
           <>
           {this.state.clicked ?
             <div>
-              <button onClick={this.props.onClickFunction}>Potwierdź</button>
+              <button onClick={()=>{this.props.onClickFunction(); this.handleClick()}}>Potwierdź</button>
               <button onClick={this.handleClick}>Anuluj</button>
             </div>
             :
