@@ -140,12 +140,14 @@ const onClick = (e) => {
 
 const MyNodeElement = ({ Nazwa, Id, efekty, opis, Czas, Techs_needed, Koszt, Active}) => (
 	<>
-	{!(Id === null || Id.includes('empty')) ?
-		(Czas == 0) ?
+	
+	{Id &&
+	!(Id === null || Id.includes('empty')) ?
+		(Czas === 0) ?
 		  <button id={Id} className="Node done" data-tip data-for={Id+'-tooltip'}>
 		 	 {Nazwa} 
 	 	 	</button>
- 	 	: (Active==1) ?
+ 	 	: (Active === 1) ?
  	 		<button id={Id} className="Node techActive pending" data-tip data-for={Id+'-tooltip'}>
 		    {Nazwa} 
 		    <div>
@@ -153,7 +155,7 @@ const MyNodeElement = ({ Nazwa, Id, efekty, opis, Czas, Techs_needed, Koszt, Act
 					⧖{Czas}
 				</div>
 	 	 	</button>
-	 	: (Czas != 0 && Techs_needed == 0) ?
+	 	: (Czas !== 0 && Techs_needed === 0) ?
 		  <button id={Id} className="Node pending" data-tip data-for={Id+'-tooltip'}>
 		    {Nazwa} 
 		    <div>
@@ -177,7 +179,7 @@ const MyNodeElement = ({ Nazwa, Id, efekty, opis, Czas, Techs_needed, Koszt, Act
   	  	{efekty && 
   	  		<DisplayEfekty efekty={efekty}/>
   	  	}
-  	  	{(Czas>0 && Techs_needed==0) && <button id={Id+'-button'} onClick={onClick}>Wynajdź</button>}
+  	  	{(Czas>0 && Techs_needed===0) && <button id={Id+'-button'} onClick={onClick}>Wynajdź</button>}
     </ReactTooltip>}
   </>
 );
@@ -207,6 +209,7 @@ export default class technologie extends React.Component {
 		if (!this.state.nodes.length) {
 			this.passNodesProps();
 		}
+		
 		console.log(this.state)
 		console.log(this.props)
 		// ChangeColors()
