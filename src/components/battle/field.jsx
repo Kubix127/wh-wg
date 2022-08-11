@@ -1,5 +1,5 @@
 import React from 'react';
-import {DragDropContext} from 'react-beautiful-dnd';
+// import {DragDropContext} from 'react-beautiful-dnd';
 
 import Square from './square';
 import Unit from './unit';
@@ -64,7 +64,7 @@ export default class Field extends React.Component {
 	render() {
 		const board = this.state.board;
 		return(
-			<DragDropContext onDragEnd={this.onDragEnd}>
+			// <DragDropContext onDragEnd={this.onDragEnd}>
 				<div id='field'>
 					{board.map((row, index)=>{
 						return (
@@ -81,7 +81,7 @@ export default class Field extends React.Component {
 							)
 					})}
 				</div>
-			</DragDropContext>
+			// </DragDropContext>
 		)
 	}
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import ReactHtmlParser from 'react-html-parser'; 
+import parse from 'html-react-parser';
 import { Link, useParams } from 'react-router-dom';
 
 import PostEfekty from './PostEfekty';
@@ -101,7 +101,7 @@ export default class post extends React.Component {
 					</Link>
 					<hr/>
 					<h2>{this.state.title}</h2>
-					<div> { ReactHtmlParser (this.state.text) } </div>
+					<div> { parse(this.state.text) } </div>
 					<hr/>
 					<p>{this.state.autor}</p>
 					{/*Modyfikacja ze strony GM*/}

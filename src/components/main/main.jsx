@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import ReactHtmlParser from 'react-html-parser'; 
+import parse from 'html-react-parser';
 
 import PageEdit from '../general/PageEdit'
 
@@ -44,7 +44,7 @@ render(){
 					}
 					{this.state.paragraphs.length && this.state.paragraphs.map(paragraph =>
 						<div key={paragraph.page+'_'+paragraph.pageId}>
-							{ReactHtmlParser(paragraph.content)}
+							{parse(paragraph.content)}
 						</div>
 					)}
 				</>

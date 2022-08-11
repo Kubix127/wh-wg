@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios'
-import ReactHtmlParser from 'react-html-parser'; 
+import parse from 'html-react-parser';
 
 import EdytorTekstu from './edytorTekstu';
 import ConfirmButton from "./confirmButton";
@@ -98,7 +98,7 @@ export default class PageEdit extends React.Component {
             {this.state.paragraphs.length>0 && this.state.paragraphs.map(paragraph =>
             this.state.edit !== paragraph.IdPage ?
               <div key={paragraph.page+'_'+paragraph.IdPage}>
-                {ReactHtmlParser(paragraph.content)}
+                {parse(paragraph.content)}
                 {this.state.edit === null && 
                 <>
                   <button onClick={()=>this.editParagraph(paragraph.IdPage)}>Edycja</button>

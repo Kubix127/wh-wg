@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { nodeClickHandler, Tree } from "react-tech-tree";
+// import { nodeClickHandler, Tree } from "react-tech-tree";
 import { PanZoom } from 'react-easy-panzoom';
 import ReactTooltip from 'react-tooltip';
 import axios from 'axios';
@@ -253,13 +253,13 @@ export default class technologie extends React.Component {
 		      
 		    >
 					<div className='TreeContainer'>
-						<Tree 
+						{/* <Tree 
 							id='tech_tree' 
 							nodes={this.state.nodes} 
 							links={this.props.links} 
 							NodeElement={MyNodeElement} 
 							nodeProps={onClick}
-						/>					
+						/>					 */}
 					</div>
 				</PanZoom>
 				
