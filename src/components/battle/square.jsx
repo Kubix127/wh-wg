@@ -1,5 +1,5 @@
 import React from 'react';
-import {Droppable} from 'react-beautiful-dnd';
+// import {Droppable} from 'react-beautiful-dnd';
 
 import Unit from './unit';
 
@@ -30,7 +30,7 @@ export default class Square extends React.Component {
 
 		return(
 			<div className='square'>
-					<Droppable droppableId={this.state.Id.toString()} coord={[x,y]}>
+					{/* <Droppable droppableId={this.state.Id.toString()} coord={[x,y]}> */}
 						{provided => (
 							<div 
 								ref={provided.innerRef}
@@ -45,7 +45,7 @@ export default class Square extends React.Component {
 								{provided.placeholder}
 							</div>
 						)}
-					</Droppable>
+					{/* </Droppable> */}
 			</div>
 		)
 	}

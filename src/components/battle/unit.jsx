@@ -1,5 +1,5 @@
 import React from 'react';
-import {Draggable} from 'react-beautiful-dnd';
+// import {Draggable} from 'react-beautiful-dnd';
 
 
 
@@ -19,18 +19,18 @@ export default class Unit extends React.Component {
 	}
 
 	render() {
-		return(
-			<Draggable draggableId={this.state.Id.toString()} index={this.props.index}>
-				{provided => (
-					<div
-						{...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={provided.innerRef}
-					>
-						{this.state.Nazwa}
-					</div>
-				)}
-			</Draggable>
+		return(<></>
+			// // <Draggable draggableId={this.state.Id.toString()} index={this.props.index}>
+			// 	{provided => (
+			// 		<div
+			// 			{...provided.draggableProps}
+      //       {...provided.dragHandleProps}
+      //       ref={provided.innerRef}
+			// 		>
+			// 			{this.state.Nazwa}
+			// 		</div>
+			// 	)}
+			// // </Draggable>
 		)
 	}
 }
