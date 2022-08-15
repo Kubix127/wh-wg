@@ -12,7 +12,7 @@ export default class Budynki extends React.Component {
 	}
 
 	componentDidMount(){
-		console.log(this.state);
+		// console.log(this.state);
 		// const miasto = {
 		// 	Id: this.props.miasto_Id,
 		// }

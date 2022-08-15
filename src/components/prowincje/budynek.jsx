@@ -24,7 +24,7 @@ export default class Budynek extends React.Component {
 	}
 
 	componentDidMount(){
-		console.log(this.state);
+		// console.log(this.state);
 	}
 
 	componentDidUpdate(){
