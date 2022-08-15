@@ -19,6 +19,7 @@ class App extends React.Component {
 		this.state = {
 			frakcja: [],
 			prowincje: [],
+			edykty: [],
 			rekrutacja: [],
 			armie: [],
 			agenci: [],
@@ -65,6 +66,7 @@ class App extends React.Component {
 				if (response.data!=='Obserwator' && response.data!=='GM') {
 					this.getFrakcja();
 					this.getProwincje();
+					this.getEdykty();
 					this.getArmie();
 					this.getTechTrees();
 				}
@@ -95,8 +97,17 @@ class App extends React.Component {
 			.get('/api/users/prowincje')
 			.then(response =>{
 				this.setState({prowincje: response.data});
-				// this.setState({Loaded: this.state.Loaded+1});
-				//console.log(response.data);
+			})
+			.catch(err => {
+				console.log(err);
+			})
+	}
+
+	getEdykty() {
+		return axios
+			.get('/api/users/prowincje/edykty')
+			.then(response =>{
+				this.setState({edykty: response.data});
 			})
 			.catch(err => {
 				console.log(err);
@@ -203,6 +214,7 @@ class App extends React.Component {
 											page = {this.state.page}
 											rekrutacja = {this.state.rekrutacja}
 											prowincje = {this.state.prowincje}
+											edykty = {this.state.edykty}
 											armie = {this.state.armie}
 											frakcja = {this.state.frakcja}
 											technologie = {this.state.technologie}
