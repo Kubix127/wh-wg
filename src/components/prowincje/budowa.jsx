@@ -36,7 +36,7 @@ export default class Budowa extends React.Component {
 	}
 
 	componentDidUpdate(){
-		console.log(this.state)
+		// console.log(this.state)
 		if (this.props.budynki.length===0 && this.state.Id_Budynek!==''){
 				this.setState({Id_Budynek: ''});
 		}

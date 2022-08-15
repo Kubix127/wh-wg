@@ -72,6 +72,7 @@ export default class content extends React.Component {
 										<Prowincje 
 											rekrutacja = {this.props.rekrutacja}
 											prowincje = {this.props.prowincje}
+											edykty = {this.props.edykty}
 											frakcja = {this.props.frakcja}
 											updateSkarbiec = {this.props.updateSkarbiec}
 											{...props	} 

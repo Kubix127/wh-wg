@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Miasto from './miasto';
+import Edykt from './edykt';
 
 
 export default class Prowincja extends React.Component {
@@ -10,11 +11,8 @@ export default class Prowincja extends React.Component {
 		this.state = {
 			Id: this.props.prowincja.Id,
 			Nazwa: this.props.prowincja.Nazwa,
-			Edykt: {
-				Id:	this.props.prowincja.Edykt,
-				Nazwa: 'Brak',
-				},
-			Edykty: [],
+			EdyktId: this.props.prowincja.Id_Edykt,
+			Edykty: this.props.edykty,
 			Przychód: this.props.prowincja.Przychód,
 			Przeludnienie: this.props.prowincja.Przeludnienie,
 			Przyrost: this.props.prowincja.Przyrost,
@@ -32,8 +30,9 @@ export default class Prowincja extends React.Component {
 		
 	}
 
-	componentDidUpdate() {
-		//console.log(this.state)
+	componentDidUpdate(prevProps) {
+		// console.log(this.state)
+		// console.log(this.props)
 	}
 
 	getZabudowa() {
@@ -51,17 +50,6 @@ export default class Prowincja extends React.Component {
 			})
 	}
 
-	getEdykty(){
-		return axios
-			.get('/api/users/prowincje/edykty')
-			.then(response =>{
-				this.setState({Edykty: response.data});
-			})
-			.catch(err => {
-				console.log(err);
-			})
-	}
-
 	render(){
 		//if(this.state.Loaded) {
 			return (
@@ -70,6 +58,18 @@ export default class Prowincja extends React.Component {
 								<h3 className="title">
 									{this.props.prowincja.Nazwa}
 								</h3>
+								<hr />										
+								<div>
+									Edykt:
+									{~~(this.props.Zabudowa.length/this.state.Rozmiar) ?
+									<Edykt
+										edykty={this.props.edykty}
+										edyktId={this.state.EdyktId}
+										prowincjaId={this.state.Id}
+									/>
+									: <> Brak </>
+									}
+								</div>
 								<hr />
 								<div>
 									<ul>
@@ -79,6 +79,7 @@ export default class Prowincja extends React.Component {
 										<li>Przyrost: {this.state.Przyrost}</li>
 										<li>Przeludnienie: {this.state.Przeludnienie}</li>
 									</ul>
+										<div>Rozmiar: {this.props.Zabudowa.length}/{this.state.Rozmiar}</div>
 									<hr />
 									<div className="flexBox">
 									{this.state.Zabudowa.map(miasto =>	// Wypisanie miast

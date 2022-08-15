@@ -19,8 +19,6 @@ general.post('/api/general/editPage', async (req, res) => {
     }
   }));
   await getOldParagraphs;
-  console.log(page.paragraphs);
-  console.log(oldParagraphs)
   for(paragraph of page.paragraphs){
     if(oldParagraphs.find(p => p.IdPage === paragraph.IdPage && p.page === paragraph.page) === undefined)
     pool.query(`INSERT INTO pages (page,content,IdPage) VALUES ('${paragraph.page}','${paragraph.content}','${paragraph.IdPage}')`, (err, rows) => {
@@ -98,7 +96,6 @@ general.get('/api/general/page', async (req, res) => {
     archive: archive,
     news: news,
   };
-  console.log(page);
   res.send(page);
 });
 

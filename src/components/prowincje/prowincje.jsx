@@ -29,6 +29,10 @@ export default class Prowincje extends React.Component {
 			})
 	}
 
+	componentDidUpdate() {
+		// console.log(this.props)
+	}
+
 	showDesc(Id){
 		this.setState({descId: Id});
 	}
@@ -47,6 +51,7 @@ export default class Prowincje extends React.Component {
 								<div key={prowincja[0].Id}>
 									<Prowincja 
 										prowincja = {prowincja[0]} 
+										edykty = {this.props.edykty}
 										Zabudowa = {prowincja[1]}
 										desc={this.showDesc} 
 										descId={this.state.descId}
