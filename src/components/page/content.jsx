@@ -108,8 +108,7 @@ export default class content extends React.Component {
 									exact 
 									render={(props)=>
 										<Technologia 
-											technologie = {this.props.technologie[0]}
-											links = {this.props.technologie[1]}
+											technologie = {this.props.technologie}
 											updateSkarbiec = {this.props.updateSkarbiec}
 											frakcja = {this.props.frakcja}
 											{...props	} 
