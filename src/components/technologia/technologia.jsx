@@ -1,188 +1,151 @@
 import React from 'react';
 
-// import { nodeClickHandler, Tree } from "react-tech-tree";
-import { PanZoom } from 'react-easy-panzoom';
-import ReactTooltip from 'react-tooltip';
+import { Graph }  from 'react-d3-graph';
 import axios from 'axios';
 
 import DisplayEfekty from '../general/DisplayEfekty'
+import CustomNode from "./customNode";
+
+import './tree.css';
 
 
 
 
-var nodes = [
-	[
-		{Id: 'Id_1T'},
-		{Id: 'Id_3T'},
-		{Id: 'Id_5T'},
-		{Id: 'Id_7T'},
-		{Id: 'Id_9T'},
-		{Id: 'Id_11T'},
-		{Id: 'Id_13T'},
-		{Id: 'Id_15T'},
-	],
-	[
-		{Id: 'Id_2T'},
-		{Id: 'Id_4T'},
-		{Id: 'Id_6T'},
-		{Id: 'Id_8T'},
-		{Id: 'Id_10T'},
-		{Id: 'Id_12T'},
-		{Id: 'Id_14T'},
-		{Id: 'Id_16T'},
-	],
-	[
-		{Id: 'empty1'},
-		{Id: 'Id_19T'},
-		{Id: 'empty2'},
-		{Id: 'Id_24T'},
-		{Id: 'Id_26T'},
-		{Id: 'empty3'},
-		{Id: 'Id_29T'},
-		{Id: 'Id_31T'},
-		{Id: 'Id_33T'},
-		{Id: 'Id_35T'},
-	],
-	[
-		{Id: 'Id_17T'},
-		{Id: 'Id_20T'},
-		{Id: 'Id_23T'},
-		{},
-		{},
-		{Id: 'Id_28T'},
-		{},
-		{},
-		{},
-		{},
-	],
-	[
-		{Id: 'empty4'},
-		{Id: 'Id_22T'},
-		{Id: 'empty5'},
-		{Id: 'Id_25T'},
-		{Id: 'Id_27T'},
-		{Id: 'empty6'},
-		{Id: 'Id_30T'},
-		{Id: 'Id_32T'},
-		{Id: 'Id_34T'},
-		{Id: 'Id_36T'},
-	],
-	[
-		{Id: 'Id_37T'},
-		{Id: 'Id_38T'},
-		{Id: 'Id_39T'},
-		{Id: 'Id_40T'},
-		{Id: 'Id_41T'},
-		{Id: 'Id_42T'},
-		{Id: 'Id_43T'},
-		{Id: 'Id_44T'},
-	]
-]
 
-const links = [
-    {"from": "Id_1T", "to": "Id_2T"},
-    {"from": "Id_1T", "to": "Id_3T"},
-    {"from": "Id_2T", "to": "Id_4T"},
-    {"from": "Id_3T", "to": "Id_4T"},
-    {"from": "Id_5T", "to": "Id_6T"},
-    {"from": "Id_5T", "to": "Id_7T"},
-    {"from": "Id_6T", "to": "Id_8T"},
-    {"from": "Id_7T", "to": "Id_8T"},
-    {"from": "Id_9T", "to": "Id_10T"},
-    {"from": "Id_9T", "to": "Id_11T"},
-    {"from": "Id_10T", "to": "Id_12T"},
-    {"from": "Id_11T", "to": "Id_12T"},
-    {"from": "Id_13T", "to": "Id_14T"},
-    {"from": "Id_13T", "to": "Id_15T"},
-    {"from": "Id_14T", "to": "Id_16T"},
-    {"from": "Id_15T", "to": "Id_16T"},
-    {"from": "Id_17T", "to": "Id_19T"},
-    {"from": "Id_17T", "to": "Id_20T"},
-    {"from": "Id_17T", "to": "Id_22T"},
-    {"from": "Id_20T", "to": "Id_23T"},
-    {"from": "Id_23T", "to": "Id_24T"},
-    {"from": "Id_23T", "to": "Id_25T"},
-    {"from": "Id_24T", "to": "Id_26T"},
-    {"from": "Id_25T", "to": "Id_27T"},
-    {"from": "Id_28T", "to": "Id_29T"},
-    {"from": "Id_28T", "to": "Id_30T"},
-    {"from": "Id_29T", "to": "Id_31T"},
-    {"from": "Id_30T", "to": "Id_32T"},
-    {"from": "Id_31T", "to": "Id_33T"},
-    {"from": "Id_32T", "to": "Id_34T"},
-    {"from": "Id_33T", "to": "Id_35T"},
-    {"from": "Id_34T", "to": "Id_36T"},
-]
-
-
-const onClick = (e) => {
-	const elements = document.getElementsByClassName('techActive');
-	for (const element of elements) {
-		element.classList.remove('techActive');
+var myConfig = {
+	"automaticRearrangeAfterDropNode": false,
+	"collapsible": false,
+	"directed": false,
+	"focusAnimationDuration": 0.75,
+	"focusZoom": 1,
+	"freezeAllDragEvents": false,
+	"height": 500,
+	"highlightDegree": 1,
+	"highlightOpacity": 0.5,
+	"initialZoom": 0.5,
+	"linkHighlightBehavior": false,
+	"maxZoom": 2,
+	"minZoom": 0.3,
+	"nodeHighlightBehavior": false,
+	"panAndZoom": false,
+	"staticGraph": true,
+	"staticGraphWithDragAndDrop": false,
+	"width": 500,
+	"d3": {
+		"alphaTarget": 0.05,
+		"gravity": -100,
+		"linkLength": 100,
+		"linkStrength": 1,
+		"disableLinkForce": false
+	},
+	"node": {
+		"color": "#d3d3d3",
+		"fontColor": "black",
+		"fontSize": 12,
+		"fontWeight": "normal",
+		"highlightColor": "red",
+		"highlightFontSize": 12,
+		"highlightFontWeight": "bold",
+		"highlightStrokeColor": "SAME",
+		"highlightStrokeWidth": 1.5,
+		"labelProperty": "name",
+		"mouseCursor": "pointer",
+		"opacity": 1,
+		"renderLabel": false,
+		"size": {
+			"width": 2000,
+			"height": 1000
+		},
+		"strokeColor": "none",
+		"strokeWidth": 1.5,
+		"svg": "",
+		"symbolType": "circle",
+		"viewGenerator": node => <CustomNode node={node} />
+	},
+	"link": {
+		"color": "#d3d3d3",
+		"fontColor": "black",
+		"fontSize": 8,
+		"fontWeight": "normal",
+		"highlightColor": "blue",
+		"highlightFontSize": 8,
+		"highlightFontWeight": "normal",
+		"labelProperty": "label",
+		"mouseCursor": "pointer",
+		"opacity": 1,
+		"renderLabel": false,
+		"semanticStrokeWidth": false,
+		"strokeWidth": 4,
+		"markerHeight": 6,
+		"markerWidth": 6,
+		"strokeDasharray": 0,
+		"strokeDashoffset": 0,
+		"strokeLinecap": "butt"
 	}
-
-	const data = {
-		tech_Id: e.target.id.slice(3,-8),
-	};
-
-	const Id = e.target.id.slice(0,-7);
-
-	return axios
-		.post('/api/users/technologie/wynajdz', data)
-		.then(response =>{
-			document.getElementById(Id).classList.add('techActive');
-		})
-		.catch(err => {
-			console.log(err);
-		})
 }
 
+const position = [
+	{id: 1, x: 0 ,y: 0},
+	{id: 2, x: 0 ,y: 150},
+	{id: 3, x: 300 ,y: 0},
+	{id: 4, x: 300 ,y: 150},
 
-const MyNodeElement = ({ Nazwa, Id, efekty, opis, Czas, Techs_needed, Koszt, Active}) => (
-	<>
-	
-	{Id &&
-	!(Id === null || Id.includes('empty')) ?
-		(Czas === 0) ?
-		  <button id={Id} className="Node done" data-tip data-for={Id+'-tooltip'}>
-		 	 {Nazwa} 
-	 	 	</button>
- 	 	: (Active === 1) ?
- 	 		<button id={Id} className="Node techActive pending" data-tip data-for={Id+'-tooltip'}>
-		    {Nazwa} 
-		    <div>
-					{(Koszt>0) &&	<>{Koszt+'$  '}</>}
-					⧖{Czas}
-				</div>
-	 	 	</button>
-	 	: (Czas !== 0 && Techs_needed === 0) ?
-		  <button id={Id} className="Node pending" data-tip data-for={Id+'-tooltip'}>
-		    {Nazwa} 
-		    <div>
-					{(Koszt>0) &&	<>{Koszt+'$  '}</>}
-					⧖{Czas}
-				</div>
-	 	 	</button>
- 	 	:	<button id={Id} className="Node" data-tip data-for={Id+'-tooltip'}>
-		    {Nazwa} 
-		    <div>
-					{(Koszt>0) &&	<>{Koszt+'$  '}</>}
-					⧖{Czas}
-				</div>
-	 	 	</button>
+	{id: 5, x: 650 ,y: 0},
+	{id: 6, x: 650 ,y: 150},
+	{id: 7, x: 950 ,y: 0},
+	{id: 8, x: 950 ,y: 150},
 
-  :	
-	  <div id={Id} className="Node empty"></div>
-	}
-  {(efekty || opis) && <ReactTooltip id={Id+'-tooltip'} place={'top'} effect={'solid'} delayUpdate={800} delayHide={400} delayShow={200}>
-  	  	{/*<p>{opis}</p>*/}
-  	  	{efekty && 
-  	  		<DisplayEfekty efekty={efekty}/>
-  	  	}
-  	  	{(Czas>0 && Techs_needed===0) && <button id={Id+'-button'} onClick={onClick}>Wynajdź</button>}
-    </ReactTooltip>}
-  </>
-);
+	{id: 9, x: 1300 ,y: 0},
+	{id: 10, x: 1300 ,y: 150},
+	{id: 11, x: 1600 ,y: 0},
+	{id: 12, x: 1600 ,y: 150},
+
+	{id: 13, x: 1950 ,y: 0},
+	{id: 14, x: 1950 ,y: 150},
+	{id: 15, x: 2250 ,y: 0},
+	{id: 16, x: 2250 ,y: 150},
+
+
+	{id: 17, x: 50 ,y: 500},
+
+	{id: 19, x: 350 ,y: 350},
+	{id: 20, x: 350 ,y: 500},
+	{id: 22, x: 350 ,y: 650},
+
+	{id: 24, x: 650 ,y: 350},
+	{id: 23, x: 650 ,y: 500},
+	{id: 25, x: 650 ,y: 650},
+
+	{id: 26, x: 950 ,y: 350},
+	// {}
+	{id: 27, x: 950 ,y: 650},
+
+
+	{id: 29, x: 1300 ,y: 350},
+	{id: 28, x: 1300 ,y: 500},
+	{id: 30, x: 1300 ,y: 650},
+
+	{id: 31, x: 1600 ,y: 350},
+	// {}
+	{id: 32, x: 1600 ,y: 650},
+
+	{id: 33, x: 1900 ,y: 350},
+	// {}
+	{id: 34, x: 1900 ,y: 650},
+
+	{id: 35, x: 2200 ,y: 350},
+	// {}
+	{id: 36, x: 2200 ,y: 650},
+
+	{id: 37, x: 50 ,y: 850},
+	{id: 38, x: 350 ,y: 850},
+	{id: 39, x: 650 ,y: 850},
+	{id: 40, x: 950 ,y: 850},
+	{id: 41, x: 1300 ,y: 850},
+	{id: 42, x: 1600 ,y: 850},
+	{id: 43, x: 1900 ,y: 850},
+	{id: 44, x: 2200 ,y: 850},
+]
 
 
 
@@ -190,89 +153,113 @@ export default class technologie extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			technologie: this.props.technologie || [],
-			nodes: [],
+			technologie: this.props.technologie,
 			loaded: false,
+			config: myConfig,
+			shaped: false,
+			resized: false,
 		}
-		this.passNodesProps = this.passNodesProps.bind(this)
+		this.resizeGraph = this.resizeGraph.bind(this);
+		this.onNodeClick = this.onNodeClick.bind(this);
+
 	}
 
 	componentDidMount() {
-		this.passNodesProps();
-		// ChangeColors()
+		if (this.state.technologie.nodes.length)
+		this.shapeGraph()
 	}
 
 	componentDidUpdate(prevProps) {
-		if (prevProps.technologie !== this.props.technologie) { 
-			this.setState({technologie: this.props.technologie});
-		}
-		if (!this.state.nodes.length) {
-			this.passNodesProps();
-		}
-		
+		if (prevProps.technologie.nodes !== this.props.technologie.nodes)
+		this.setState({technologie: this.props.technologie})
 		console.log(this.state)
-		console.log(this.props)
-		// ChangeColors()
+		if (this.state.technologie.nodes.length && !this.state.shaped)
+		this.shapeGraph()
+		if (this.state.shaped && !this.state.resized)
+		{
+			this.resizeGraph()
+		}
+	}
+		
+	shapeGraph() {
+		console.log('shape')
+		this.setState(prevState => ({
+			technologie: {
+				...prevState.technologie, 
+				nodes: prevState.technologie.nodes.map(element => {
+					var pos = position.find(e=> {return e.id===element.id}) 
+					if (pos === undefined) return element
+					var x = pos.x
+					var y = pos.y
+					return {...element, x: x, y: y}
+				})
+
+			}
+		}))
+		this.setState({shaped: true})
 	}
 
+	resizeGraph() {
+		var height = document.getElementById('graph-id-graph-wrapper').offsetHeight
+		var width = document.getElementById('graph-id-graph-wrapper').offsetWidth
+		console.log(height)
+		if (height !== this.state.config.height+6)
+			this.setState(prevState=>({config: {...prevState.config, height: height}}))
+		if (width !== this.state.config.width)
+			this.setState(prevState=>({config: {...prevState.config, width: width}}))
+		
+		if (!this.state.resized)
+			this.setState({resized: true})
+	}
 
-	passNodesProps() {
-		if (this.state.technologie.length) {
-			const techTree = this.state.technologie;
-			var newNodes = [];
-			nodes.forEach((row, rowIndex) =>{
-				newNodes[rowIndex] = [];
-				row.forEach((node, nodeIndex) =>{
-					var newNode = techTree.find(element =>
-						element.Id === node.Id 
-					);
-					if(newNode === undefined){
-						newNodes[rowIndex][nodeIndex] = {};	
-					} else {
-						newNodes[rowIndex][nodeIndex] = newNode;
-					}
-				});
-			});
-			this.setState({nodes: newNodes});
-			this.setState({loaded: true});
+	onNodeClick = (id, node) => {
+		if (node.Techs_needed !==0 || node.Czas === 0) {
+			return
 		}
+
+		const data = {
+			tech_Id: id,
+		};
+	
+	
+		return axios
+			.post('/api/users/technologie/wynajdz', data)
+			.then(response =>{
+				if (response.data === 'Success')
+				this.setState(prevState => ({
+					technologie: {
+						links: prevState.technologie.links,
+						nodes: prevState.technologie.nodes.map(element => {
+							if (element.id == id)
+							element.Active = 1
+							else 
+							element.Active = 0
+							return element
+						})
+					}
+				}))
+			})
+			.catch(err => {
+				console.log(err);
+			})
 	}
 
 	render() {
-		if(this.state.loaded){
+		if (this.state.shaped)
 		return (
-			<div id="tech_container">
-				Technologia WIP
+		<div id="treeWrapper" style={{ width: '100%', height: '100%' }}>
+			<Graph
+				id="graph-id" // id is mandatory
+				data={this.state.technologie}
+				config={this.state.config}
 				
-				<PanZoom
-		      // boundaryRatioVertical={0.5} 
-		      // boundaryRatioHorizontal={0.5} 
-		      enableBoundingBox
-		      id='tech_panzoom'
-		      disableScrollZoom='true'
-		      disableDoubleClickZoom='true'
-		      disableKeyInteraction='true'
-		      // autoCenter={true}
-		      
-		    >
-					<div className='TreeContainer'>
-						{/* <Tree 
-							id='tech_tree' 
-							nodes={this.state.nodes} 
-							links={this.props.links} 
-							NodeElement={MyNodeElement} 
-							nodeProps={onClick}
-						/>					 */}
-					</div>
-				</PanZoom>
-				
-			</div>
-
-		)} else {
-			return(
-				<div>Loading...</div>
-			)
-		}
+				onClickNode={this.onNodeClick}
+			/>	
+		</div>)
+		return (
+			<div>Loading...</div>
+		)
+		
 	}
 
 }

@@ -23,7 +23,10 @@ class App extends React.Component {
 			rekrutacja: [],
 			armie: [],
 			agenci: [],
-			technologie: [],
+			technologie: {
+				nodes: [],
+				links: []
+			},
 			bonusy: [],
 			relacje: [],
 			traktaty: [],
