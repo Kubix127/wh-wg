@@ -58,6 +58,7 @@ general.get('/api/general/page', async (req, res) => {
     pool.query(`SELECT * FROM pages WHERE page='main'`, (err, rows) => {
       if (err) {
         res.send(err);
+        return
       } else {
         main = rows;
         resolve_main();
@@ -69,6 +70,7 @@ general.get('/api/general/page', async (req, res) => {
     pool.query(`SELECT * FROM pages WHERE page='archive'`, (err, rows) => {
       if (err) {
         res.send(err);
+        return
       } else {
         archive = rows;
         resolve_archive();
@@ -80,6 +82,7 @@ general.get('/api/general/page', async (req, res) => {
     pool.query(`SELECT * FROM pages WHERE page='news'`, (err, rows) => {
       if (err) {
         res.send(err);
+        return
       } else {
         news = rows;
         resolve_news();
