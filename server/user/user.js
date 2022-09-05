@@ -13,6 +13,7 @@ const budowa = require('./budowa');
 const armia = require('./armia');
 const agenci = require('./agenci');
 const technologie = require('./technologie');
+const relacje = require('./relacje');
 
 user.use(login);
 user.use(register);
@@ -22,8 +23,8 @@ user.use(budynek);
 user.use(budowa);
 user.use(armia);
 user.use(agenci);
-user.use(technologie)
-
+user.use(technologie);
+user.use(relacje);
 
 
 user.get('/api/users', (req, res) => {

@@ -28,7 +28,7 @@ class App extends React.Component {
 				links: []
 			},
 			bonusy: [],
-			relacje: [],
+			relacje: {},
 			traktaty: [],
 			wydarzenieNowe: null,
 			wiadomościNowe: null,
@@ -72,6 +72,7 @@ class App extends React.Component {
 					this.getEdykty();
 					this.getArmie();
 					this.getTechTrees();
+					this.getRelacje();
 				}
 				if (response.data==='GM') {
 					this.getEfekty();
@@ -135,6 +136,17 @@ class App extends React.Component {
 			.then(response =>{
 				this.setState({technologie: response.data});
 				// console.log(response);
+			})
+			.catch(err => {
+				console.log(err);
+			})
+	}
+
+	getRelacje() {
+		return axios
+			.get('/api/users/relacje')
+			.then(response => {
+				this.setState({relacje: response.data});
 			})
 			.catch(err => {
 				console.log(err);
@@ -221,6 +233,7 @@ class App extends React.Component {
 											armie = {this.state.armie}
 											frakcja = {this.state.frakcja}
 											technologie = {this.state.technologie}
+											relacje = {this.state.relacje}
 											rola = {this.state.Rola}
 											wydarzenia_efekty = {this.state.wydarzenia_efekty}
 											updateSkarbiec = {this.updateSkarbiec}

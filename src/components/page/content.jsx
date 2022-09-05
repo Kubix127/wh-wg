@@ -114,7 +114,16 @@ export default class content extends React.Component {
 											{...props	} 
 										/>}
 								/>
-								<Route path="/relacje" exact component={Relacje} />
+								<Route
+								 	path="/relacje" 
+									exact 
+									render={(props) => 
+										<Relacje
+											frakcja = {this.props.frakcja}
+											relacje ={this.props.relacje}
+											{...props	}
+										/>
+									}/>
 								<Route path="/profil" exact component={Profil} />
 							</Switch>
 					</div>
