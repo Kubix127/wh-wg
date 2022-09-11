@@ -17,6 +17,7 @@ export default class Relacje extends React.Component {
 			loaded: false,
 		}
 		this.init = this.init.bind(this);
+		this.onChange = this.onChange.bind(this);
 	}
 
 	componentDidMount() {
@@ -59,32 +60,34 @@ export default class Relacje extends React.Component {
 	}
 
 	init(Id) {
-    this.setState({frakcja: {
-			Id: this.state.relacje.frakcje.find(element => {return element.Id == Id}).Id,
-			Nazwa: this.state.relacje.frakcje.find(element=> {return element.Id == Id}).Nazwa
-		}})
+    this.setState({frakcja: this.state.relacje.frakcje.find(element => {return element.Id == Id})})
+  }
+
+	onChange(e) {
+    this.setState({frakcja: this.state.relacje.frakcje.find(element => {return element.Id == e.target.value})})
   }
 
 
 	render() {
 		if (this.state.loaded)
 		return (
-			<div style={{'text-align': 'center'}}>
+			<div style={{'textAlign': 'center'}}>
 				<DropdownListSelect
+					onChange = {this.onChange}
 					list = {this.state.dropdownList} 
 					value = {this.state.frakcja.Id}
 					init = {this.init}
 				/>
 				<div>
-					{/* <Protrait frakcja={this.props.rola}/>
-					<Protrait frakcja={this.state.frakcja.Nazwa}/> */}
 					<div style={{float: 'left'}}>
 						<Protrait frakcja={'emblemPlaceholder'}/>
-						<div>emblemPlaceholder</div>
+						{/* <Protrait frakcja={this.props.frakcja.Nazwa}/> */}
+						<div>{this.props.frakcja.Nazwa}</div>
 					</div>
 					<div style={{float: 'right'}}>
 						<Protrait frakcja={'emblemPlaceholder'} />	
-						<div>emblemPlaceholder</div>
+						{/* <Protrait frakcja={this.state.frakcja.Nazwa}/> */}
+						<div>{this.state.frakcja.Nazwa}</div>
 					</div>
 				</div>
 			</div>

@@ -32,7 +32,7 @@ class App extends React.Component {
 			traktaty: [],
 			wydarzenieNowe: null,
 			wiadomościNowe: null,
-			Loaded: 0,
+			Loaded: false,
 			Rola: '',
 
 			wydarzenia_efekty: '',
@@ -61,24 +61,37 @@ class App extends React.Component {
 		console.log(this.state)
 	}
 
+	async getData() {
+		let promiseArray = []
+
+		if (this.state.Rola!=='Obserwator' && this.state.Rola!=='GM') {
+			promiseArray.push(
+				this.getFrakcja(),
+				this.getProwincje(),
+				this.getEdykty(),
+				this.getArmie(),
+				this.getTechTrees(),
+				this.getRelacje(),
+				this.getPages()
+			)
+		}
+
+		if (this.state.Rola==='GM') {
+			promiseArray.push(this.getEfekty())
+		}
+
+		promiseArray.push(this.getPages())
+		
+		Promise.all(promiseArray).then(() => {
+			this.setState({Loaded: true}, console.log('Loaded'));
+		})
+	}
+
 	logIn() {
 		return axios
 			.get("/api/users")
 			.then(response =>{
-				this.setState({Rola: response.data});
-				if (response.data!=='Obserwator' && response.data!=='GM') {
-					this.getFrakcja();
-					this.getProwincje();
-					this.getEdykty();
-					this.getArmie();
-					this.getTechTrees();
-					this.getRelacje();
-				}
-				if (response.data==='GM') {
-					this.getEfekty();
-				}
-				this.getPages();
-				this.setState({Loaded: this.state.Loaded+1});
+				this.setState({Rola: response.data}, () => this.getData());
 			})
 			.catch(err => {
 				console.log(err);
@@ -123,7 +136,6 @@ class App extends React.Component {
 			.get('/api/users/armie')
 			.then(response =>{
 				this.setState({armie: response.data});
-				//this.setState({Loaded: this.state.Loaded+1});
 			})
 			.catch(err => {
 				console.log(err);
