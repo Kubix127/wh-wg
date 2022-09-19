@@ -6,7 +6,7 @@ const pool = mysql.createPool({
     password: process.env.MYSQL_PWD || process.env.REACT_APP_MYSQL_PWD,
     database: process.env.MYSQL_DB || process.env.REACT_APP_MYSQL_DB,
     multipleStatements: true,
-    connectionLimit: 8,
+    connectionLimit: 5,
   });
 
   module.exports = pool;

@@ -1,7 +1,9 @@
 import React from 'react';
 import DropdownListSelect from '../general/dropdownListSelect';
 
+import './relacje.css';
 import Protrait from '../general/portrait';
+
 
 export default class Relacje extends React.Component {
 	constructor(props) {
@@ -69,26 +71,39 @@ export default class Relacje extends React.Component {
 
 
 	render() {
+		const umowy = ['Pakt o nieagresji', 'Umowa handlowa', 'Dostęp wojskowy', 'Sojusz obronny', 'Sojusz militarny', 'Wypowiedzenie wojny']
+
+
 		if (this.state.loaded)
 		return (
-			<div style={{'textAlign': 'center'}}>
+			<div className='selectFrakcja'>
 				<DropdownListSelect
 					onChange = {this.onChange}
 					list = {this.state.dropdownList} 
 					value = {this.state.frakcja.Id}
 					init = {this.init}
 				/>
-				<div>
-					<div style={{float: 'left'}}>
+				<div className='wrapperFar'>
+					<div className='left'>
 						<Protrait frakcja={'emblemPlaceholder'}/>
 						{/* <Protrait frakcja={this.props.frakcja.Nazwa}/> */}
 						<div>{this.props.frakcja.Nazwa}</div>
 					</div>
-					<div style={{float: 'right'}}>
+
+					<div className='relacje'>
+						relacje
+					</div>
+
+					<div className='right'>
 						<Protrait frakcja={'emblemPlaceholder'} />	
 						{/* <Protrait frakcja={this.state.frakcja.Nazwa}/> */}
 						<div>{this.state.frakcja.Nazwa}</div>
 					</div>
+				</div>
+				<div className='wrapperClose'>
+					{umowy.map(element => {
+						return <div key={'umowa'+element} className='umowa'>{element}</div>
+					})}
 				</div>
 			</div>
 		)
