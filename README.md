@@ -11,8 +11,9 @@ A turn based game for approx. 20 players with the possibility of raising that nu
 - Realationship panel with treaties, trade and relation meter between populations of factions
 - Political forum where discussions would take place - Direct and global message system between players (distance between players impacts the delay), Game Master's event handling
 - Agents for each faction with the ability of political play, espionage or assisting armies
-- Game mechanics - Control over region (low control would cause riots), corruption (city and army debuffs spredable by certain factions), 
+- Game mechanics - Control over region (low control would cause riots), corruption (city and army debuffs spredable by certain factions), Imperial authority for the Humans (Power and influence within the Empire), Necromancy for the Vampires
 - Unique interactive tech tree for each species impacting every aspect of the game
+- Unique magic schools and spells for species 
 - Unique Lore units for factions within species
 - Unique Lore buildings in certain locations
 
